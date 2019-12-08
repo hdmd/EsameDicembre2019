@@ -57,4 +57,15 @@ public class AppController {
 		return appService.counter(nome_param);
 	}
 	
+	@GetMapping("/filtroStringa/{field}/{value}")
+	public ArrayList<Element> stringFilter(@PathVariable("field") String field, @PathVariable("value") String value) {
+		return appService.filter(field, "eq", value);
+	}
+	
+	@GetMapping("/filtroValore/{field}/{operator}/{value}")
+	public ArrayList<Element> valueFilter(@PathVariable("field") String field,
+			@PathVariable("operator") String operator, @PathVariable("value") float value) {
+		return appService.filter(field, operator, value);
+	}
+	
 }
