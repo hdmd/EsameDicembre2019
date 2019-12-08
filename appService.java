@@ -87,4 +87,35 @@ public class appService {
 		return (ArrayList<Element>) filteredData.select(v, nome_param, operator, value);
 
 		}
+	public ArrayList<Element> multifilter(String field, String logicOperator, String operator1, Object value1, String operator2,
+			Object value2) {
+		// check dell'operatore
+		if (!filteredData.rightOperator(operator1, operator2)) {
+			throw new RuntimeException("Operatore di confronto non valido. Operatori validi: gt, lt, eq");
+		}
+		ArrayList<Element> list1 = new ArrayList<Element>();
+		list1 = (ArrayList<Element>) filteredData.select(v, field, operator1, value1);
+		if (logicOperator.equals("and")) {
+			return (ArrayList<Element>) filteredData.select(list1, field, operator2, value2);
+		} else if (logicOperator.equals("or")) {
+			ArrayList<Element> list2 = new ArrayList<Element>();
+			list2 = (ArrayList<Element>) filteredData.select(v, field, operator2, value2);
+			return filteredData.merge(list1, list2);
+		}
+
+		else {
+			throw new RuntimeException("Operatore logico non valido");
+		}
+	}
+	
+		public ArrayList<Element> multifilter(String field, Object value1, String operator2, Object value2) {
+		if (!filteredData.rightOperator(operator2)) {
+			throw new RuntimeException("Operatore di confronto non valido. Operatori validi: gt, lt, eq");
+		}
+		ArrayList<Element> list1 = new ArrayList<Element>();
+		list1 = (ArrayList<Element>) filteredData.select(v, field, "eq", value1);
+		ArrayList<Element> list2 = new ArrayList<Element>();
+		list2 = (ArrayList<Element>) filteredData.select(list1, field, operator2, value2);
+		return list2;
+	}
 }
