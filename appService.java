@@ -79,4 +79,12 @@ public class appService {
 			}
 			return Calculator.counter(inputColumn);
 		}
+	
+		public ArrayList<Element> filter(String nome_param, String operator, Object value) {
+		if (!filteredData.rightOperator(operator)) {
+			throw new RuntimeException("Operatore di confronto non valido. Operatori validi: gt, lt, eq");
+		}
+		return (ArrayList<Element>) filteredData.select(v, nome_param, operator, value);
+
+		}
 }
