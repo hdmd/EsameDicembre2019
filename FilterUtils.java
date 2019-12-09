@@ -64,11 +64,9 @@ public class FilterUtils<T> {
 	
 	public boolean rightOperator(String... operator) {
 		for (String x : operator) {
-			// if(!Arrays.asList("gt","lt","eq").contains(x))
 			if (!("gt".equals(x) || "lt".equals(x) || "eq".equals(x)))
 				return false;
 		}
-		// throw new RuntimeException("Operatore di confronto non valido");
 		return true;
 	}
 }
