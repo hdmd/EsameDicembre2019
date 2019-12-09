@@ -40,7 +40,6 @@ public class Calculator<T> {
 								value = (Float) m.invoke(item);
 						}
 						if (operazione.equals("devstd")) {
-							//value = 0;
 							Float sum = (Float) m.invoke(item);
 							float avg = sum / data.size();
 							
