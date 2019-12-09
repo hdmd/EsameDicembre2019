@@ -75,10 +75,4 @@ public class AppController {
 		return appService.multifilter(field, logicOperator, operator1, value1, operator2, value2);
 	}
 	
-	@GetMapping("/filtro/{field}/{value1}/{operator2}/{value2}")
-	public ArrayList<Element> filter(@PathVariable("field") String field, @PathVariable("value1") String value1, @PathVariable("operator2") String operator2,
-			@PathVariable("value2") float value2) {
-		return appService.multifilter(field, value1, operator2, value2);
-	}
-	
 }
