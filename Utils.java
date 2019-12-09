@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-//import java.net.HttpURLConnection;
-//import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
@@ -31,9 +29,8 @@ public class Utils {
 		boolean a = true;
 		try {
 			
-			//String url1="";
+			
 			URLConnection openConnection = new URL(url).openConnection();
-			//openConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
 			InputStream in = openConnection.getInputStream();
 			
 			 String data = "";
@@ -58,7 +55,6 @@ public class Utils {
 			        JSONObject o1 = (JSONObject)o; 
 			        String format = (String)o1.get("format");
 			        String urlD = (String)o1.get("url");
-			        //System.out.println(format + " | " + urlD);
 			        if(format.equals("http://publications.europa.eu/resource/authority/file-type/TSV") && a) {
 			        	download(urlD, "file.tsv");
 			        	a = false;
@@ -81,8 +77,6 @@ public class Utils {
 			openConnection.addRequestProperty("User-Agent",
 					"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
 			InputStream in = openConnection.getInputStream();
-			//String data = ""; 
-			//String line = "";
 			try {
 				if (openConnection.getResponseCode() >= 300 && openConnection.getResponseCode() < 400) {
 					download(openConnection.getHeaderField("Location"), fileName);
@@ -106,23 +100,16 @@ public class Utils {
 			String line;
 				
 			while ((line = br.readLine()) != null) {
-				String[] values = line.split(","); //--> 6, .split divide line quando incontra ,
-				//String[] geo = line.split("\t");
+				String[] values = line.split(","); 
 				
-				String[] geo = values[values.length - 1].split("\t"); // --> 38, .split divide geo quando incontra \t
-				
-				//String[] riga = new String[]
-				//int rigaLength = ((values.length - 1)+(geo.length - 1));
+				String[] geo = values[values.length - 1].split("\t");
 				
 				int rigaLength = ((values.length - 1)+(geo.length)); 
 				
-				String[] riga = new String[rigaLength]; // creo riga di tipo String lunga 38 (come rigaLenght)
-				//System.out.println(rigaLength);
-				//System.out.println(values.length);
-				//System.out.println(geo.length);
+				String[] riga = new String[rigaLength];
 				int k;
 				for ( k = 0 ; k < rigaLength; k++) {
-					if (k<(values.length)-1) { //se k è minore di 4 ([0,1,2,3,4])
+					if (k<(values.length)-1) { 
 						for (int i = 0; i < ((values.length)-1); i++) 
 							riga[k]=values[i]; 
 					} else 
@@ -130,19 +117,19 @@ public class Utils {
 							riga[k]=geo[j];
 					if (k<(values.length-1)) {
 						riga[k]=values[k];
-						//System.out.println(riga[k]);					
+										
 					} else {
 						riga[k]=geo[k-(values.length-1)];
-						//System.out.println(riga[k]);
+						
 					  } 
 				}
-				//System.out.println("OK");
+				
 				if( k < 38) {
 					String[] a = new String[38];
 					String b = "0";
 					int i;
 					for ( i = 0; i < riga.length ; i ++) {
-						a[i] = riga[i];//creo array + grande
+						a[i] = riga[i];
 					}
 					riga = a;
 					for ( i = 25; i < riga.length; i++)
@@ -163,14 +150,14 @@ public class Utils {
 					for (int p = 0; p < riga.length; p++)
 					{ 	
 						linea[j] = riga[p];
-						if((riga[p].contains(":")))//|| riga[p].contains()))
+						if((riga[p].contains(":")))
 						{
 							linea[j] = s;
-							//System.out.println(linea[j]);
+							
 						} else
 							if((riga[p].contains("u") || riga[p].contains("d"))) {
 								linea[j] = riga[p].substring(0, riga[p].length() - 1);
-								//System.out.println(linea[j]);
+								
 							}
 					j++;	
 					}
