@@ -325,7 +325,7 @@ public class Element {
 				+ "]";
 	}
 
-	/*public static String type(String x) {
+	public static String type(String x) {
 		if (x.equals("duration"))
 			return "String";
 		if (x.equals("deg_urb"))
@@ -403,6 +403,6 @@ public class Element {
 		if (x.equals("TR"))
 			return "Float";
 		return null;
-	}*/
+	}
 	
 }
