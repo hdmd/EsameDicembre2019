@@ -66,7 +66,7 @@ public class AppController {
 	 * @see it.univpm.esameDicembre.Model.Stats
 	 * @return Valore medio dei valori relativi all'indice.
 	 */
-	@GetMapping("/average/{field}")
+	@GetMapping("/avg/{field}")
 	public Stats average(@PathVariable("field") String field) {
 		return appService.avg(field);
 	}
