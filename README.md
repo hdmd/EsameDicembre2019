@@ -22,7 +22,8 @@ Esempio:
 _/min/EU28_ -> restituisce il valore più piccolo che fa riferimento alla colonna dell’indice EU28.
 •	La richiesta /stats/{field} restituisce tutte le statistiche relative all’indice specificato.  
 # Filtri
-1.**Filtri semplici:**
+
+**1.Filtri semplici:**
 -	Per gli attributi di tipo Stringa:  
 _/stringFilter/{field}/{word}_  
 Per gli attributi numerici:   
@@ -30,8 +31,9 @@ _/valueFilter/{field}/{operator}/{value}_
 Esempio:  
 _/stringFilter/EU28/NEV_ -> restituisce tutti gli elementi contenenti la stringa NEV relativa a EU28.  
 _/valueFilter/EU28/>/50_ -> restituisce tutti gli elementi con i valori relativi a EU28 maggiori di 50.  
-Operator rappresenta l’operatore di confronto: >, <, =; value rappresenta invece il valore di soglia.  
-2.**Filtri combinati:**
+Operator rappresenta l’operatore di confronto: >, <, =; value rappresenta invece il valore di soglia. 
+
+**2.Filtri combinati:**
 -	**and** o **or** di due richieste condizionali:  
 _/valueFilter/{field}/{logicOperator}/{operator1}/{value1}/{operator2}/{value2}_  
 Ciascuna richiesta è definita da operatorX e valueX; logicOperator rappresenta l’operazione di unione o intersezione degli elementi filtrati dai due confronti  
