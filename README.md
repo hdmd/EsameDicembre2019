@@ -4,7 +4,7 @@ Esame Dicembre 2019
 Il progetto in questione fornisce un'applicazione WEB in JAVA, implementata attraverso l'utilizzo di SpringBoot, che prevede la modellazione di un dataset in formato TSV reperibile al seguente URL: http://data.europa.eu/euodp/data/api/3/action/package_show?id=3h1d8YdPl3KCgkeQNbjkA
 
 # Inizializzazione Dataset
-All’avvio del programma viene eseguita l’elaborazione del dataset attraverso la classe Utils, che decodifica il JSON dell'URL sopra indicato per poi effettuare il download e successivamente il parsing del dataset. Il risultato è l’organizzazione dei dati in una tabella i cui elementi riguardano informazioni statistiche sulla popolazione:  le prime cinque colonne, identificate rispettivamente dagli indici duration, deg_urb, sex, age, unit contengono elementi di tipo Stringa, mentre le successive contengono elementi numerici (i valori di timegeo e degli indici dei paesi europei sono rispettivamente di tipo intero e float).
+All’avvio del programma viene eseguita l’elaborazione del dataset attraverso la classe Utils, che decodifica il JSON dell'URL sopra indicato per poi effettuare il download e successivamente il parsing del dataset. Il risultato è l’organizzazione dei dati in una tabella i cui elementi riguardano informazioni statistiche sulla popolazione: le prime cinque colonne, identificate rispettivamente dagli indici duration, deg_urb, sex, age, unit, contengono elementi di tipo stringa, mentre le successive contengono elementi numerici (i valori di timegeo e degli indici dei paesi europei sono rispettivamente di tipo intero e float).
 
 # Avvio
 L’applicazione avvia un web-server in locale sulla porta 8080 che rimane in attesa di richieste effettuate da client. Tramite richieste di tipo GET con determinate rotte, il programma prevede la restituzione di particolari dati o l’esecuzione di operazioni di filtraggio.
@@ -22,7 +22,7 @@ Esempio:
 _/min/EU28_ -> restituisce il valore più piccolo che fa riferimento alla colonna dell’indice EU28.
 •	La richiesta /stats/{field} restituisce tutte le statistiche relative all’indice specificato.  
 # Filtri
-1.	Filtri semplici
+1.**Filtri semplici:**
 -	Per gli attributi di tipo Stringa:  
 _/stringFilter/{field}/{word}_  
 Per gli attributi numerici:   
@@ -31,7 +31,7 @@ Esempio:
 _/stringFilter/EU28/NEV_ -> restituisce tutti gli elementi contenenti la stringa NEV relativa a EU28.  
 _/valueFilter/EU28/>/50_ -> restituisce tutti gli elementi con i valori relativi a EU28 maggiori di 50.  
 Operator rappresenta l’operatore di confronto: >, <, =; value rappresenta invece il valore di soglia.  
-2.	Filtri combinati:
+2.**Filtri combinati:**
 -	**and** o **or** di due richieste condizionali:  
 _/valueFilter/{field}/{logicOperator}/{operator1}/{value1}/{operator2}/{value2}_  
 Ciascuna richiesta è definita da operatorX e valueX; logicOperator rappresenta l’operazione di unione o intersezione degli elementi filtrati dai due confronti  
