@@ -45,7 +45,7 @@ public class AppService {
 	public AppService() throws IOException {
 		File f = new File("dataset.tsv");
 		if (!f.exists()) {
-			Utils.JSONDecode("http://data.europa.eu/euodp/data/api/3/action/package_show?id=3h1d8YdPl3KCgkeQNbjkA", "file.tsv");
+			Utils.JSONDecode("https://data.europa.eu/euodp/data/api/3/action/package_show?id=3h1d8YdPl3KCgkeQNbjkA", "file.tsv");
 		}
 		Utils.tsvParse(data, header, "file.tsv");
 	}
