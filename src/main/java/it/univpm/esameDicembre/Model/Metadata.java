@@ -3,7 +3,8 @@ package it.univpm.esameDicembre.Model;
 /**
  * Classe che definisce i metadati relativi al dataset. Sono implementati 
  * i getter e i setter realtivi a ciascun campo.
- * @author ASUS
+ * @author Mattia Dignani, Antonio Cozzolino
+ * @version 1.0
  *
  */
 public class Metadata {
