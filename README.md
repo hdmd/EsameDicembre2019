@@ -1,13 +1,13 @@
 # EsameDicembre2019
-Repository dedicata all'esame di Programmazione ad Oggetti del 21 ottobre 2019
-Esame Dicembre 2019
+Repository dedicata all'esame di Programmazione ad Oggetti del 21 ottobre 2019.   
 Il progetto in questione fornisce un'applicazione WEB in JAVA, implementata attraverso l'utilizzo di SpringBoot, che prevede la modellazione di un dataset in formato TSV reperibile al seguente URL: http://data.europa.eu/euodp/data/api/3/action/package_show?id=3h1d8YdPl3KCgkeQNbjkA
 
 # Inizializzazione Dataset
 All’avvio del programma viene eseguita l’elaborazione del dataset attraverso la classe Utils, che decodifica il JSON dell'URL sopra indicato per poi effettuare il download e successivamente il parsing del dataset. Il risultato è l’organizzazione dei dati in una tabella i cui elementi riguardano informazioni statistiche sulla popolazione: le prime cinque colonne, identificate rispettivamente dagli indici duration, deg_urb, sex, age, unit, contengono elementi di tipo stringa, mentre le successive contengono elementi numerici (i valori di timegeo e degli indici dei paesi europei sono rispettivamente di tipo intero e float).
 
 # Avvio
-L’applicazione avvia un web-server in locale sulla porta 8080 che rimane in attesa di richieste effettuate da client. Tramite richieste di tipo GET con determinate rotte, il programma prevede la restituzione di particolari dati o l’esecuzione di operazioni di filtraggio.
+L’applicazione avvia un web-server in locale sulla porta 8080 che rimane in attesa di richieste effettuate da client.  
+Tramite richieste di tipo GET con determinate rotte, il programma prevede la restituzione di particolari dati o l’esecuzione di operazioni di filtraggio.  
 URL per l’applicazione:   
 _/http//localhost:8080_
 
@@ -44,5 +44,5 @@ _/filter/{field1}/{word}/{field2}/{operator}/{value}_
 field1 e field2 rappresentano sui cui valori verrà applicato il filtraggio; word è il che fa riferimento alla striga scelta; operator è l’operatore di confronto applicato a field2 e value è il valore di confronto.
 
 # Diagrammi:
-[Link](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20dei%20casi%20d'uso.PNG) per i diagramma dei casi d'uso.
+[Link](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20dei%20casi%20d'uso.PNG) per il diagramma dei casi d'uso.  
 [Link](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagrammadelleclassi.png) per il diagramma delle classi.
