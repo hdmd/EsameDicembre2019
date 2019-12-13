@@ -44,4 +44,5 @@ _/filter/{field1}/{word}/{field2}/{operator}/{value}_
 field1 e field2 rappresentano sui cui valori verrà applicato il filtraggio; word è il che fa riferimento alla striga scelta; operator è l’operatore di confronto applicato a field2 e value è il valore di confronto.
 
 # Diagrammi:
-[Link](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20dei%20casi%20d'uso.PNG) per diagramma dei casi d'uso.
+[Link](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20dei%20casi%20d'uso.PNG) per i diagramma dei casi d'uso.
+[Link](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagrammadelleclassi.png) per il diagramma delle classi.
