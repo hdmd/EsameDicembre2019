@@ -19,17 +19,10 @@ public class test {
 		
 		ArrayList<Element> v = new ArrayList<Element>();
 		ArrayList<Metadata> header = new ArrayList<Metadata>();
-		//FilterUtils<Element> filteredData = new FilterUtils<Element>();
 		
 		Utils.JSONDecode(url, fileName);
 		Utils.tsvParse(v, header, fileName);
 		
-		//ArrayList<Element> v = new ArrayList<Element>();
-		//Calculator.sum(v);
-		//Calculator.min(v);
-		//Calculator.max(v);
-		//Calculator.counter(filteredData);
-
 	}
 
 }
