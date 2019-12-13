@@ -26,14 +26,14 @@ public class FilterUtils<T> {
 	
 	public static boolean check(Object value, String operator, Object th) {
 		if (value instanceof Number && th instanceof Number) {
-			Double thC = ((Number) th).doubleValue();
-			Double valuec = ((Number) value).doubleValue();
+			Double TH = ((Number) th).doubleValue();
+			Double VALUE = ((Number) value).doubleValue();
 			if (operator.equals("="))
 				return value.equals(th);
 			else if (operator.equals(">"))
-				return valuec > thC;
+				return VALUE > TH;
 			else if (operator.equals("<"))
-				return valuec < thC;
+				return VALUE < TH;
 		} else if (th instanceof String && value instanceof String) {
 			return value.equals(th);
 		} else {
