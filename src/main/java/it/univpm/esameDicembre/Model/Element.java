@@ -333,9 +333,10 @@ public class Element {
 	}
 	
 	/** 
-	 * 
+	 * Restituisce come Stringa il tipo dell'attributo il cui nome viene dato come
+	 * parametro in ingresso.
 	 * @param x
-	 * @return
+	 * @return Tipo dell'indice del dataset passato come parametro. 
 	 */
 	public static String type(String x) {
 		if (x.equals("duration"))
