@@ -63,7 +63,7 @@ public class AppController {
 	 * Restituisce l'i-esimo elemento del dataset
 	 * 
 	 * @param index Indice identificativo dell'elemento
-	 * @return {@link Element}
+	 * @return i-esimo elemento
 	 */
 	
 	@GetMapping("/data/{index}")
@@ -116,6 +116,7 @@ public class AppController {
 	
 	/**
 	 * Restituisce il numero di occorrenze per ciascun valore unico all'interno del dataset.
+	 *
 	 * @param field Campo su cui effettuare l'operazione.
 	 * @return Elenco dei valori unici con le rispettive occorrenze.
 	 * @throws NoSuchMethodException
@@ -131,13 +132,8 @@ public class AppController {
 	}
 	
 	/**
-	 * Effettua un'operazione di filtraggio sul dataset.
-	 * I criteri sono descritti dai parametri dati in ingresso, immessi dall'utente e restituisce gli elementi filtrati. Il parametro field 
-	 * identifica il campo del dataset di tipo Stringa su cui applicare il filtro.
-	 * Se un elemento (Stringa) del dataset relativo all'indice è uguale ( operatore: = ) 
-	 * alla stringa word allora tale elemento viene aggiunto all'ArrayList contenente gli elementi filtrati.
-	 * 
-	 * Restituisce tutti gli elementi che presentano il rispettivo
+	 * Esegue un filtraggio sul dataset
+	 * Restituisce tutti gli elementi che contengono la stringa indicata (word) nel rispettivo campo (field)
 	 * 
 	 * @param field Campo su cui effettuare l'operazione.
 	 * @param word Stringa di confronto.
@@ -150,34 +146,8 @@ public class AppController {
 	}
 	
 	/**
-	 * Effettua un filtraggio combinato dato da due filtri. Il risultato del primo è un elenco
-	 * caratterizzato da un indice del dataset rappresentante una stringa, 
-	 * quello del secondo è un elenco caratterizzato da un indice del dataset rappresentante
-	 * un valore numerico; il secondo filtraggio è gestito da operator.
-	 * La combinazione di questi due filtri ritorna un elenco filtrato dalla stringa desiderata
-	 * e dal valore di soglia scelto, a seocoda dell'operatore.  
-	 * @param field1 Indice del dataset rappresentante una stringa.
-	 * @param word Stringa per il confronto.
-	 * @param field2 Indice del dataset rappresentante un valore numerico.
-	 * @param operator Operatore di confronto.
-	 * @param value Valore di confronto.
-	 * @return Elenco degli elementi filtrati.
-	 */
-	
-	@GetMapping("/filter/{field1}/{word}/{field2}/{operator}/{value}")
-	public ArrayList<Element> filter(@PathVariable("field1") String field1, @PathVariable("word") String word, @PathVariable("field2") String field2, @PathVariable("operator") String operator,
-			@PathVariable("value") float value) {
-		return appService.multifilter(field1, word, field2, operator, value);
-	}
-	
-	/**
-	 * Effettua il filtraggio del dataset. I criteri sono descritti dai parametri variabili 
-	 * dati in ingresso, immessi dall'utente e restituisce gli elementi filtrati. Il parametro 
-	 * field di tipo numerico identifica l'indice del dataset su cui il filtro deve essere 
-	 * applicato. Per ciascun elemento (numerico) del dataset relativo all'indice scelto viene 
-	 * effettuato il confronto, definito da operator, tra il valore relativo all'indice
-	 * considerato e value. Se l'esito del confronto è positivo, l'elemento viene aggiunto 
-	 * all'ArrayList contenente gli elementi filtrati.
+	 * Esegue un filtraggio sul dataset
+	 * Restituisce l'elenco di elementi i cui valori nella colonna indicata (field) rispettano la condizione imposta dal confronto
 	 * 
 	 * @param field Campo su cui effettuare l'operazione.
 	 * @param operator Operatore di confronto.
@@ -192,19 +162,30 @@ public class AppController {
 	}
 	
 	/**
-	 * Effettua la combinazione di due filtri applicati al dataset i cui criteri
-	 * sono descritti dai parametri dati in ingresso e restituisce tutti elementi
-	 * filtrati. L'attributo considerato è <strong>value</strong>.
-	 * Il parametro logicOperator sta ad indicare se deve essere effettuata l'unione
-	 * o l'intersezione dei 2 singoli filtri.
-	 * I singoli filtri applicano, per ogni elemento del dataset, un semplice
-	 * confronto definito da operatorX tra il valore dell'attributo considerato e
-	 * valueX. Se l'esito del confronto è positivo, l'elemento viene aggiunto
-	 * all'ArrayList contenente gli elementi filtrati.
-	 * Per l'operazione di unione si applicano i filtri separatamente e
-	 * successivamente si uniscono gli ArrayList risultanti. Per l'operazione di
-	 * intersezione il secondo filtro viene applicato all'ArrayList risultante dal
-	 * primo filtro e non all'intero dataset.
+	 * Esegue un filtraggio combinato sul dataset
+	 * Restituisce l'elenco di elementi che contengono la stringa indicata (word) nel campo field1
+	 * e allo stesso tempo rispettano la condizione imposta dal confronto numerico.
+	 *
+	 * @param field1 Campo contenente una stringa su cui effettuare l'operazione
+	 * @param word Stringa di confronto.
+	 * @param field2 Campo contenente un valore numerico su cui effettuare l'operazione
+	 * @param operator Operatore di confronto.
+	 * @param value Valore di confronto.
+	 * @return Elenco degli elementi filtrati.
+	 */
+	
+	@GetMapping("/filter/{field1}/{word}/{field2}/{operator}/{value}")
+	public ArrayList<Element> filter(@PathVariable("field1") String field1, @PathVariable("word") String word, @PathVariable("field2") String field2, @PathVariable("operator") String operator,
+			@PathVariable("value") float value) {
+		return appService.multifilter(field1, word, field2, operator, value);
+	}
+	/**
+	 * Esegue un filtraggio combinato sul dataset
+	 * Il parametro logicOperator indica se deve essere effettuata l'unione
+	 * o l'intersezione dei 2 filtri.
+	 * Per l'unione si applicano i filtri separatamente e successivamente si uniscono gli ArrayList risultanti.
+	 * Per l'intersezione il secondo filtro viene applicato all'ArrayList risultante dal primo filtro e non all'intero dataset.
+	 * Restituisce l'elenco di elementi che soddisfano le condizioni imposte dal confronto
 	 *  
 	 * @param field Campo su cui effettuare l'operazione.
 	 * @param operator1 Primo operatore di confronto.
@@ -222,18 +203,39 @@ public class AppController {
 		return appService.multifiltervalue(field, logicOperator, operator1, value1, operator2, value2);
 	}
 	
+	/**
+	 * Permette l'inserimento di nuovi dati in formato JSON 
+	 * I nuovi dati verranno inseriti in un ArrayList di appoggio che verrà successivamente aggiunto al dataset
+	 * 
+	 * @param body
+	 * @return Elemento aggiunto al dataset
+	 */
 	
 	@PostMapping("/data")
 	public ArrayList<Element> insert(@RequestBody Element body) {
 		return appService.addBody(body);
 	}
 	
+	/**
+	  * Permette di eliminare l'i-esimo elemento dal dataset
+	  * 
+	  * @param index
+	  * @return Elemento rimosso dal dataset
+	  */
 	
 	@DeleteMapping("/deleteElement/{index}")
 	public ArrayList<Element> deleteValue(@PathVariable int index) {
 		return appService.deleteVal(index);
 	}
 
+	/**
+	 * Permette di eliminare tutti gli elementi del dataset che soddisfano la condizione imposta
+	 * 
+	 * @param field Campo su cui effettuare l'operazione.
+	 * @param operator operatore di confronto
+	 * @param value valore di confronto
+	 * @return Tutti i rimanenti elementi del dataset
+	 */
 	
 	@DeleteMapping("/deletefilter/{field}/{operator}/{value}")
 	public ArrayList<Element> delete(@PathVariable("field") String field,
