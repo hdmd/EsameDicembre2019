@@ -72,7 +72,7 @@ Rappresenta una combinazione di due filtri numerici mostrati sopra.
 Restituisce l'elenco degli elementi che soddisfano i requisiti imposti.   
 
 Esempio:
-> _/valueFilter/EU28/>/50/or/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono maggiori di 50 o minori di 20
+> _/valueFilter/EU28/>/50/or/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono maggiori di 50 o minori di 20   
 > _/valueFilter/EU28/>/50/and/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono contemporaneamente maggiori di 50 e minori di 20   
 
 -	Filtro combinato -> `_/filter/{field1}/{word}/{field2}/{operator}/{value}_`   
