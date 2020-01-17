@@ -16,7 +16,7 @@ le prime cinque colonne, identificate rispettivamente dagli indici duration, deg
 L’applicazione avvia un web-server in locale sulla porta 8080 che rimane in attesa di richieste.
 Selezionando la rotta desiderata (GET, POST o DELETE) è possibile inserire delle richieste che prevedono la restituzione di particolari dati a seconda del comando desiderato.
 URL per l’applicazione:
-'_/http//localhost:8080_'
+> _/http//localhost:8080_
 
 # GET
 Selezionando la rotta GET si possono immettere i seguenti comandi:
