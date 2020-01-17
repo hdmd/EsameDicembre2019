@@ -94,16 +94,17 @@ Dove _word1_, _word2_, _word3_ rappresentano i nuovi valori da inserire
 
 # DELETE
 Attraverso la rotta DELETE è possibile eliminare uno o più elementi del dataset, a seconda delle specifiche richieste.        
+
 **Eliminazione di un singolo elemento**   
-> `/deleteElement/{index}`    
-_index_ rappresenta la posizione dell'elemento da eliminare   
+`/deleteElement/{index}`    
+• _index_ rappresenta la posizione dell'elemento da eliminare   
 Dopo averlo rimosso dal dataset, restituisce l'elemento identificato dall'indice i    
 
 **Eliminazione di più elementi filtrati**   
-> `/deletefilter/{field}/{operator}/{value}`    
-_field_ rappresenta il campo su cui effettuare il filtraggio    
-_operator_ rappresenta l’operatore di confronto; può essere scelto **>**, **<**, **=**.   
-_value_ rappresenta il valore di soglia da confrontare.   
+`/deletefilter/{field}/{operator}/{value}`    
+• _field_ rappresenta il campo su cui effettuare il filtraggio    
+• _operator_ rappresenta l’operatore di confronto; può essere scelto **>**, **<**, **=**.   
+• _value_ rappresenta il valore di soglia da confrontare.   
 Dopo aver effettuato l'operazione di filtraggio, come sopra riportato, gli elementi che soddisfano le condizioni imposte vengono rimossi dal dataset.   
 Questa richiesta restituisce l'elenco di elementi rimanenti nel dataset.
 
