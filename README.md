@@ -24,19 +24,19 @@ URL per l’applicazione:
 # GET
 Selezionando la rotta GET si possono immettere i seguenti comandi:        
 **Restituzione Dati**   
-•	` _/data_` -> restituisce tutti gli elementi del dataset, ognuno con le rispettive specifiche.    
-•	` _/data/{index}_` -> restituisce le specifiche dell’i-esimo elemento.    
-• `	_/metadata_` -> restituisce i metadati, evidenziando il nome dei rispettivi campi (field) e il tipo di valore contenuto al suo interno.       
+•	` /data` -> restituisce tutti gli elementi del dataset, ognuno con le rispettive specifiche.    
+•	` /data/{index}` -> restituisce le specifiche dell’i-esimo elemento.    
+• `	/metadata` -> restituisce i metadati, evidenziando il nome dei rispettivi campi (field) e il tipo di valore contenuto al suo interno.       
 
 **Restituzione Statistiche**    
 Per ogni campo contenente un valore di tipo _float_ è possibile eseguire delle operazioni matematiche tramite le seguenti richieste:    
-•	`_/sum/{field}_` -> restituisce la somma di tutti i valori contraddistinti dal campo _field_    
-• `_/min/{field}_` -> restituisce il minimo tra tutti i valori contraddistinti dal campo _field_    
-• `_/max/{field}_` -> restituisce il massimo tra tutti i valori contraddistinti dal campo _field_   
-• `_/avg/{field}_` -> restituisce la media aritmetica dei valori contraddistinti dal campo _field_    
-• `_/devstd/{field}_` -> restituisce la deviazione standard dei valori contraddistinti dal campo _field_        
+•	`/sum/{field}` -> restituisce la somma di tutti i valori contraddistinti dal campo _field_    
+• `/min/{field}` -> restituisce il minimo tra tutti i valori contraddistinti dal campo _field_    
+• `/max/{field}` -> restituisce il massimo tra tutti i valori contraddistinti dal campo _field_   
+• `/avg/{field}` -> restituisce la media aritmetica dei valori contraddistinti dal campo _field_    
+• `/devstd/{field}` -> restituisce la deviazione standard dei valori contraddistinti dal campo _field_        
 
-• `_/stats/{field}_`-> restituisce l'elenco delle statistiche sopra riportate per il _field_ scelto   
+• `/stats/{field}`-> restituisce l'elenco delle statistiche sopra riportate per il _field_ scelto   
 
 Esempio:    
 >_/min/EU28_ = 1.3 -> restituisce il più piccolo dei valori contenuti nella colonna EU28    
@@ -47,13 +47,13 @@ Esempio:
 **Filtri semplici:**    
 
 Al contrario delle statistiche, le operazioni di filtraggio possono essere eseguite per tutti i campi. In particolare è possibile effettuare le seguenti richieste:   
-- Per attributi di tipo stringa -> `_/stringFilter/{field}/{word}_`   
+- Per attributi di tipo stringa -> `/stringFilter/{field}/{word}`   
 Restituisce tutti gli elementi che contengono nel rispettivo campo _field_ la stringa _word_    
 
 Esempio:
 > _/stringFilter/EU28/NEV_' -> restituisce tutti gli elementi contenenti la stringa NEV nella colonna EU28.  
 
-- Per gli attributi numerici -> `_/valueFilter/{field}/{operator}/{value}_`   
+- Per gli attributi numerici -> `/valueFilter/{field}/{operator}/{value}`   
 _operator_ rappresenta l’operatore di confronto; può essere scelto **>**, **<**, **=**.   
 _value_ rappresenta il valore di soglia da confrontare.   
 Restituisce tutti gli elementi che rispettano la condizione imposta dal confronto.    
@@ -64,7 +64,7 @@ Esempio:
 
 **Filtri combinati:**   
 
--	Filtro numerico -> `_/valueFilter/{field}/{operator1}/{value1}/{logicOperator}/{operator2}/{value2}_`    
+-	Filtro numerico -> `/valueFilter/{field}/{operator1}/{value1}/{logicOperator}/{operator2}/{value2}`    
 Rappresenta una combinazione di due filtri numerici mostrati sopra.   
 • _logicOperator_ indica l'operatore logico; può essere scelto **and** o **or** a seconda che si vogliano rispettare entrambe le condizioni o solamente una delle due (intersezione o unione degli elementi filtrati).    
 • _operator1_ e _operator2_ sono gli operatori di confronto precedentemente indicati.   
@@ -75,7 +75,7 @@ Esempio:
 > _/valueFilter/EU28/>/50/or/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono maggiori di 50 o minori di 20   
 > _/valueFilter/EU28/>/50/and/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono contemporaneamente maggiori di 50 e minori di 20   
 
--	Filtro combinato -> `_/filter/{field1}/{word}/{field2}/{operator}/{value}_`   
+-	Filtro combinato -> `/filter/{field1}/{word}/{field2}/{operator}/{value}`   
 Rappresenta una combinazione di un filtro numerico e un filtro stringa.   
 • _field1_ e _field2_ sono i campi contenenti rispettivamente attributi di tipo stringa e attributi numerici.   
 • _word_ rappresenta la stringa da confrontare mentre _value_ rappresenta il valore di soglia.    
