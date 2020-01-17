@@ -45,9 +45,8 @@ public class Calculator<T> {
 								value = (Float) m.invoke(item);
 						}
 						if (operation.equals("devstd")) {
-							//value = 0;
-							float sum = (Float) m.invoke(item);
-							float avg = sum / data.size();
+							value += (Float) m.invoke(item);
+							float avg = value / data.size();
 							float v = 0;
 							v += Math.pow((Float) m.invoke(item) - avg, 2);
 							v /= data.size();
