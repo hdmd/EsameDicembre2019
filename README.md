@@ -91,3 +91,4 @@ Una volta inviata, occorre spostarsi nel campo **Body** selezionare **raw** e sc
 # DELETE
 
 # Diagrammi:
+[GitHub Pages](C:/Users/ASUS/Downloads/esameDicembre/Diagramma%20delle%20classi.png)
