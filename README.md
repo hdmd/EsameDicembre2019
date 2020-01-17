@@ -8,9 +8,12 @@ Il progetto in questione fornisce un'applicazione WEB in JAVA, implementata attr
 # Inizializzazione Dataset
 All’avvio del programma viene eseguita l’elaborazione del dataset attraverso la classe _Utils_, che decodifica il JSON dell'URL sopra indicato per poi effettuarne il download e successivamente il parsing.
 Il risultato è l’organizzazione dei dati in una tabella le cui righe rappresentano gli elementi del dataset in questione.
-Ogni riga (elemento) è contraddistinta da un indice che ne precisa la rispettiva posizione all'interno della struttura dati e contiene dei valori riguardanti informazioni statistiche sulla popolazione; tali informazioni sono distribuite in 38 colonne, di cui:
-
-le prime cinque colonne, identificate rispettivamente dagli indici duration, deg_urb, sex, age, unit, contengono elementi di tipo stringa, mentre le successive contengono elementi numerici (i valori di timegeo e degli indici dei paesi europei sono rispettivamente di tipo intero e float).
+Ogni riga (elemento) è contraddistinta da un indice che ne precisa la rispettiva posizione all'interno della struttura dati e contiene dei valori riguardanti informazioni statistiche sulla popolazione; tali informazioni sono organizzate come segue:
+• I primi cinque campi di ogni elemento contengono attributi di tipo stringa e sono identificati da
+`duration  deg_urb   sex   age    unit`
+• Il campo `timegeo` contiene attributi di tipo int.
+• I successivi campi contengono attributi di tipo float.
+`EU28 	BE 	BG 	CZ 	DK 	DE 	EE 	IE 	EL 	ES 	FR 	HR 	IT 	CY 	LV 	LT 	LU 	HU 	MT 	NL 	AT 	PL 	PT 	RO 	SI 	SK 	FI 	SE 	UK 	IS 	NO 	TR` 
 
 # Avvio
 L’applicazione avvia un web-server in locale sulla porta 8080 che rimane in attesa di richieste.
