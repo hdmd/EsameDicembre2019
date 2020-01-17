@@ -22,35 +22,34 @@ URL per l’applicazione:
 Selezionando la rotta GET si possono immettere i seguenti comandi:
 
 **Restituzione Dati**
-•	'_/data_' -> restituisce tutti gli elementi del dataset, ognuno con le rispettive specifiche.  
-•	'_/data/{index}_' -> restituisce le specifiche dell’i-esimo elemento.  
-•	'_/metadata_' -> restituisce i metadati, evidenziando il nome dei rispettivi campi (field) e il tipo di valore contenuto al suo interno.
+•	> _/data_ -> restituisce tutti gli elementi del dataset, ognuno con le rispettive specifiche.  
+•	> _/data/{index}_ -> restituisce le specifiche dell’i-esimo elemento.  
+• >	_/metadata_ -> restituisce i metadati, evidenziando il nome dei rispettivi campi (field) e il tipo di valore contenuto al suo interno.
 
 **Restituzione Statistiche**
 Per ogni campo contenente un valore di tipo _float_ è possibile eseguire delle operazioni matematiche tramite le seguenti richieste:
-•	'_/sum/{field}_' -> restituisce la somma di tutti i valori contraddistinti dal campo _field_
-• '_/min/{field}_' -> restituisce il minimo tra tutti i valori contraddistinti dal campo _field_
-• '_/max/{field}_' -> restituisce il massimo tra tutti i valori contraddistinti dal campo _field_
-• '_/avg/{field}_' -> restituisce la media aritmetica dei valori contraddistinti dal campo _field_
-• '_/devstd/{field}_' -> restituisce la deviazione standard dei valori contraddistinti dal campo _field_
+•	> _/sum/{field}_ -> restituisce la somma di tutti i valori contraddistinti dal campo _field_
+• > _/min/{field}_ -> restituisce il minimo tra tutti i valori contraddistinti dal campo _field_
+• > _/max/{field}_ -> restituisce il massimo tra tutti i valori contraddistinti dal campo _field_
+• > _/avg/{field}_ -> restituisce la media aritmetica dei valori contraddistinti dal campo _field_
+• > _/devstd/{field}_ -> restituisce la deviazione standard dei valori contraddistinti dal campo _field_
 
-• _/stats/{field}_ -> restituisce l'elenco delle statistiche sopra riportate per il _field_ scelto
+• > _/stats/{field}_ -> restituisce l'elenco delle statistiche sopra riportate per il _field_ scelto
 
 Esempio:
-'''
-_/min/EU28_ = 1.3 -> restituisce il più piccolo dei valori contenuti nella colonna EU28
-_/average/IT_ = 44.705803 -> restituisce la media dei valori presenti nella colonna IT
-'''
+>_/min/EU28_ = 1.3 -> restituisce il più piccolo dei valori contenuti nella colonna EU28
+> _/average/IT_ = 44.705803 -> restituisce la media dei valori presenti nella colonna IT
+
 
 
 **Filtri semplici:**
 
 Al contrario delle statistiche, le operazioni di filtraggio possono essere eseguite per tutti i campi. In particolare è possibile effettuare le seguenti richieste:
-- Per attributi di tipo stringa -> '_/stringFilter/{field}/{word}_'
+- Per attributi di tipo stringa -> _/stringFilter/{field}/{word}_
 Restituisce tutti gli elementi che contengono nel rispettivo campo _field_ la stringa _word_
 
 Esempio:
-'_/stringFilter/EU28/NEV_' -> restituisce tutti gli elementi contenenti la stringa NEV nella colonna EU28.  
+> _/stringFilter/EU28/NEV_' -> restituisce tutti gli elementi contenenti la stringa NEV nella colonna EU28.  
 
 - Per gli attributi numerici -> '_/valueFilter/{field}/{operator}/{value}_'
 _operator_ rappresenta l’operatore di confronto; può essere scelto **>**, **<**, **=**.
@@ -58,8 +57,8 @@ _value_ rappresenta il valore di soglia da confrontare.
 Restituisce tutti gli elementi che rispettano la condizione imposta dal confronto.
 
 Esempio:
-'_/valueFilter/EU28/>/50_' -> restituisce tutti gli elementi i cui valori nella colonna EU28 sono maggiori di 50.  
-'_/valueFilter/timegeo/=/2014_' -> restituisce tutti gli elementi i cui valori nella colonna timegeo sono uguali 2014.
+> _/valueFilter/EU28/>/50_ -> restituisce tutti gli elementi i cui valori nella colonna EU28 sono maggiori di 50.  
+> _/valueFilter/timegeo/=/2014_ -> restituisce tutti gli elementi i cui valori nella colonna timegeo sono uguali 2014.
 
 **Filtri combinati:**
 
@@ -71,17 +70,17 @@ _value1_ _value2_ sono i valori da confrontare.
 Restituisce l'elenco degli elementi che soddisfano i requisiti imposti.
 
 Esempio:
-'_/valueFilter/EU28/>/50/or/</20_' -> restituisce gli elementi i cui valori nella colonna EU28 sono maggiori di 50 o minori di 20
-'_/valueFilter/EU28/>/50/and/</20_' -> restituisce gli elementi i cui valori nella colonna EU28 sono contemporaneamente maggiori di 50 e minori di 20
+> _/valueFilter/EU28/>/50/or/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono maggiori di 50 o minori di 20
+> _/valueFilter/EU28/>/50/and/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono contemporaneamente maggiori di 50 e minori di 20
 
--	Filtro combinato: attributi  numerici e stringhe -> '_/filter/{field1}/{word}/{field2}/{operator}/{value}_' 
+-	Filtro combinato: attributi  numerici e stringhe -> _/filter/{field1}/{word}/{field2}/{operator}/{value}_ 
 Rappresenta una combinazione di un filtro numerico e un filtro stringa.
 _field1_ e _field2_ sono i campi contenenti rispettivamente attributi di tipo stringa e attributi numerici.
 _word_ rappresenta la stringa da confrontare mentre _value_ rappresenta il valore di soglia.
 Restituisce l'elenco di elementi che contengono la stringa _word_ nella colonna _field1_ e allo stesso tempo rispettano la condizione imposta dal confronto numerico.
 
 Esempio:
-'_/filter/duration/NEV/EU28/</50_' -> restituisce tutti gli elementi che contengono NEV nella colonna duration e allo stesso tempo contengono un valore minore di 50 nella colonna EU28
+> _/filter/duration/NEV/EU28/</50_ -> restituisce tutti gli elementi che contengono NEV nella colonna duration e allo stesso tempo contengono un valore minore di 50 nella colonna EU28
 
 # POST
 Selezionando la rotta POST è possibile inserire nuovi dati in formato JSON tramite la richiesta: '/data'
