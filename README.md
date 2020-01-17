@@ -91,5 +91,5 @@ Una volta inviata, occorre spostarsi nel campo **Body** selezionare **raw** e sc
 # DELETE
 
 # Diagrammi:
-[GitHub Pages](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20delle%20classi.png) 
-[GitHub Pages](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20dei%20casi%20d'uso.PNG)
+[Diagramma delle classi](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20delle%20classi.png)   
+[Diagramma dei casi d'uso](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20dei%20casi%20d'uso.PNG)
