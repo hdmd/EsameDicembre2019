@@ -1,6 +1,6 @@
-	package it.univpm.esameDicembre.Service;
+package it.univpm.esameDicembre.Service;
 
-	import java.lang.reflect.Field;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -27,27 +27,34 @@ public class Filters<T> {
 			return false;
 	}
 
-	public static boolean check2(Object word, Object word_filter) {
-		return word.equals(word_filter);
+	public static boolean check2(Object word, Object word2) {
+	return word.equals(word2);
 	}
-
+	
+	
+	public boolean checkup(String op) {
+		if(!(">".contains(op) || "<".contains(op) || "=".contains(op)))
+			return false;
+		else 
+			return true;
+		}
+	
 	public Collection<T> select(ArrayList<T> data, String field, String operator, Object value) {
-		Collection<T> out = new ArrayList<T>();
-		for (T item : data) { 
+		Collection<T> tmpout = new ArrayList<T>();
+		for (T item : data) { //per ogni oggetto (T) item all'interno della collezione data
 			try {
-				Method m = item.getClass()
-						.getMethod("get" + field.substring(0, 1).toUpperCase() + field.substring(1), null);
+				Method m = item.getClass().getMethod("get" + field.substring(0, 1).toUpperCase() + field.substring(1), null);
 				try {
 					Object tmp = m.invoke(item);
 					if (tmp instanceof Number  && value instanceof Number) {
 						Float tmp1 = ((Number) tmp).floatValue();
 						Float value1 = ((Number) value).floatValue();
 					if (Filters.check1(tmp1, operator, value1))
-						out.add(item);
+						tmpout.add(item);
 					}
 					else if(tmp instanceof String && value instanceof String) {
 							if (Filters.check2(tmp, value)) {
-								out.add(item);
+								tmpout.add(item);
 							}
 					}
 				} catch (IllegalAccessException e) {
@@ -64,34 +71,27 @@ public class Filters<T> {
 				throw new RuntimeException("Causa di errore: " + e.getMessage());
 			}
 		}
-		return out;
+		return tmpout;
 	}
 
-	public ArrayList<Element> merge(ArrayList<Element> list1, ArrayList<Element> list2) {
-		int i;
-		for (i = 0; i < list2.size(); i++) {
-			if (!list1.contains((list2).get(i))) {
-				list1.add(list2.get(i));
+	public ArrayList<Element> merge(ArrayList<Element> out1, ArrayList<Element> out2) {
+		int k;
+		for (k = 0; k < out2.size(); k++) {
+			if (!out1.contains((out2).get(k))) {
+				out1.add(out2.get(k));
 			}
 		}
-		return list1;
+		return out1;
 	}
-	public ArrayList<Element> merge2(ArrayList<Element> list1, ArrayList<Element> list2) {
+	public ArrayList<Element> subtract(ArrayList<Element> out1, ArrayList<Element> out2) {
 		int i;
-		for (i = 0; i < list2.size(); i++) {
-			if (list1.contains((list2).get(i))) {
-				list1.remove(list2.get(i));
+		for (i = 0; i < out2.size(); i++) {
+			if (out1.contains((out2).get(i))) {
+				out1.remove(out2.get(i));
 			}
 		}
-		return list1;
+		return out1;
 	}
-
-	public boolean checkup(String op) {
-		if(!(">".contains(op) || "<".contains(op) || "=".contains(op)))
-			return false;
-		else 
-			return true;
-		}
 	
 	public static boolean checkfield(String field) throws NoSuchFieldException, SecurityException {
 		Field field1 = Element.class.getField(field);
@@ -100,4 +100,5 @@ public class Filters<T> {
 		} else 
 			return false;
 	}
+
 }
