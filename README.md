@@ -85,10 +85,27 @@ Esempio:
 > _/filter/duration/NEV/EU28/</50_ -> restituisce tutti gli elementi che contengono NEV nella colonna duration e allo stesso tempo contengono un valore minore di 50 nella colonna EU28
 
 # POST
-Selezionando la rotta POST è possibile inserire nuovi dati in formato JSON tramite la richiesta: '/data'
-Una volta inviata, occorre spostarsi nel campo **Body** selezionare **raw** e scegliere il formato JSON nel menu **Text**; fatto ciò basterà scrivere i nuovi dati racchiusi da parentesi graffe:
+Selezionando la rotta POST è possibile **inserire nuovi dati** in formato JSON tramite la richiesta: `/data`
+Una volta inviata, occorre spostarsi nel campo **Body** selezionare **raw** e scegliere il formato JSON nel menu **Text**; fatto ciò basterà scrivere i nuovi dati racchiusi da parentesi graffe, come da esempio:        
+
+{"duration":"word1","deg_urb":"word2","sex":"word3" ... }       
+
+Dove _word1_, _word2_, _word3_ rappresentano i nuovi valori da inserire
 
 # DELETE
+Attraverso la rotta DELETE è possibile eliminare uno o più elementi del dataset, a seconda delle specifiche richieste.        
+**Eliminazione di un singolo elemento**   
+> `/deleteElement/{index}`    
+_index_ rappresenta la posizione dell'elemento da eliminare   
+Dopo averlo rimosso dal dataset, restituisce l'elemento identificato dall'indice i    
+
+**Eliminazione di più elementi filtrati**   
+> `/deletefilter/{field}/{operator}/{value}`    
+_field_ rappresenta il campo su cui effettuare il filtraggio    
+_operator_ rappresenta l’operatore di confronto; può essere scelto **>**, **<**, **=**.   
+_value_ rappresenta il valore di soglia da confrontare.   
+Dopo aver effettuato l'operazione di filtraggio, come sopra riportato, gli elementi che soddisfano le condizioni imposte vengono rimossi dal dataset.   
+Questa richiesta restituisce l'elenco di elementi rimanenti nel dataset.
 
 # Diagrammi:
 [Diagramma delle classi](https://github.com/hdmd/EsameDicembre2019/blob/master/Diagramma%20delle%20classi.png)   
