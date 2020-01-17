@@ -37,19 +37,7 @@ public class Filters<T> {
 		else 
 			return true;
 		}
-/*	
-	public boolean checkfield(ArrayList<T> header, String field) {
-		for (T item : header) {
-				Method m = item.getClass().getMethod();
-				Object tmp = m.invoke(item);
-				if () 
-					return false;
-				else
-					return true;						
-		}
-		
-	}
-	*/
+
 	
 	public Collection<T> select(ArrayList<T> data, String field, String operator, Object value) {
 		Collection<T> tmpout = new ArrayList<T>();
