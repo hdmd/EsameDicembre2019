@@ -9,10 +9,10 @@ Il progetto in questione fornisce un'applicazione WEB in JAVA, implementata attr
 All’avvio del programma viene eseguita l’elaborazione del dataset attraverso la classe _Utils_, che decodifica il JSON dell'URL sopra indicato per poi effettuarne il download e successivamente il parsing.    
 Il risultato è l’organizzazione dei dati in una tabella le cui righe rappresentano gli elementi del dataset in questione.   
 Ogni riga (elemento) è contraddistinta da un indice che ne precisa la rispettiva posizione all'interno della struttura dati e contiene dei valori riguardanti informazioni statistiche sulla popolazione; tali informazioni sono organizzate come segue:    
-• I primi cinque campi di ogni elemento contengono attributi di tipo stringa e sono identificati da   
-`duration  deg_urb   sex   age    unit`   
-• Il campo `timegeo` contiene attributi di tipo int.    
-• I successivi campi contengono attributi di tipo float.    
+• I primi cinque campi di ogni elemento contengono attributi di tipo stringa e sono identificati da       
+`duration  deg_urb   sex   age    unit`       
+• Il campo `timegeo` contiene attributi di tipo int.        
+• I successivi campi contengono attributi di tipo float.        
 `EU28 	BE 	BG 	CZ 	DK 	DE 	EE 	IE 	EL 	ES 	FR 	HR 	IT 	CY 	LV 	LT 	LU 	HU 	MT 	NL 	AT 	PL 	PT 	RO 	SI 	SK 	FI 	SE 	UK 	IS 	NO 	TR`    
 
 # Avvio   
@@ -39,7 +39,7 @@ Per ogni campo contenente un valore di tipo _float_ è possibile eseguire delle 
 • `_/stats/{field}_`-> restituisce l'elenco delle statistiche sopra riportate per il _field_ scelto   
 
 Esempio:    
->_/min/EU28_ = 1.3 -> restituisce il più piccolo dei valori contenuti nella colonna EU28
+>_/min/EU28_ = 1.3 -> restituisce il più piccolo dei valori contenuti nella colonna EU28    
 > _/average/IT_ = 44.705803 -> restituisce la media dei valori presenti nella colonna IT
 
 
@@ -59,26 +59,26 @@ _value_ rappresenta il valore di soglia da confrontare.
 Restituisce tutti gli elementi che rispettano la condizione imposta dal confronto.    
 
 Esempio:
-> _/valueFilter/EU28/>/50_ -> restituisce tutti gli elementi i cui valori nella colonna EU28 sono maggiori di 50.  
+> _/valueFilter/EU28/>/50_ -> restituisce tutti gli elementi i cui valori nella colonna EU28 sono maggiori di 50.   
 > _/valueFilter/timegeo/=/2014_ -> restituisce tutti gli elementi i cui valori nella colonna timegeo sono uguali 2014.
 
 **Filtri combinati:**   
 
--	Doppio filtro per attributi numerici -> `_/valueFilter/{field}/{operator1}/{value1}/{logicOperator}/{operator2}/{value2}_`    
+-	Filtro numerico -> `_/valueFilter/{field}/{operator1}/{value1}/{logicOperator}/{operator2}/{value2}_`    
 Rappresenta una combinazione di due filtri numerici mostrati sopra.   
-_logicOperator_ indica l'operatore logico; può essere scelto **and** o **or** a seconda che si vogliano rispettare entrambe le condizioni o solamente una delle due (intersezione o unione degli elementi filtrati).    
-_operator1_ e _operator2_ sono gli operatori di confronto precedentemente indicati.   
-_value1_ _value2_ sono i valori da confrontare.   
+• _logicOperator_ indica l'operatore logico; può essere scelto **and** o **or** a seconda che si vogliano rispettare entrambe le condizioni o solamente una delle due (intersezione o unione degli elementi filtrati).    
+• _operator1_ e _operator2_ sono gli operatori di confronto precedentemente indicati.   
+• _value1_ _value2_ sono i valori da confrontare.   
 Restituisce l'elenco degli elementi che soddisfano i requisiti imposti.   
 
 Esempio:
 > _/valueFilter/EU28/>/50/or/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono maggiori di 50 o minori di 20
 > _/valueFilter/EU28/>/50/and/</20_ -> restituisce gli elementi i cui valori nella colonna EU28 sono contemporaneamente maggiori di 50 e minori di 20   
 
--	Filtro combinato: attributi  numerici e stringhe -> `_/filter/{field1}/{word}/{field2}/{operator}/{value}_`   
+-	Filtro combinato -> `_/filter/{field1}/{word}/{field2}/{operator}/{value}_`   
 Rappresenta una combinazione di un filtro numerico e un filtro stringa.   
-_field1_ e _field2_ sono i campi contenenti rispettivamente attributi di tipo stringa e attributi numerici.   
-_word_ rappresenta la stringa da confrontare mentre _value_ rappresenta il valore di soglia.    
+• _field1_ e _field2_ sono i campi contenenti rispettivamente attributi di tipo stringa e attributi numerici.   
+• _word_ rappresenta la stringa da confrontare mentre _value_ rappresenta il valore di soglia.    
 Restituisce l'elenco di elementi che contengono la stringa _word_ nella colonna _field1_ e allo stesso tempo rispettano la condizione imposta dal confronto numerico.   
 
 Esempio:
